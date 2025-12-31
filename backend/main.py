@@ -173,6 +173,6 @@ async def detect_damage(
         return {
             "damages": get_simulated_damage(), 
             "source": "simulation_fallback", 
-            "error": str(e),
+            "error": "An internal error occurred during processing.",
             "debug_info": f"Model: {selected_model}. Client valid: {client is not None}"
         }

@@ -45,8 +45,7 @@ python -m venv venv
 
 Install dependencies:
 ```bash
-pip install fastapi uvicorn google-genai python-dotenv pillow
-# OR using requirements.txt if available, otherwise just run the pip command above
+pip install -r requirements.txt
 ```
 
 Create a `.env` file in the `backend/` directory:

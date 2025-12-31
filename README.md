@@ -6,7 +6,7 @@ A modern web application that uses **Generative AI (Google Gemini)** to detect, 
 *(Note: You can add a screenshot of the app here)*
 
 ## ✨ Features
-- **AI-Powered Detection**: Uses Gemini 1.5/2.0 models to identify dents, scratches, broken glass, and more.
+- **AI-Powered Detection**: Uses **Gemini models** to identify dents, scratches, broken glass, and more.
 - **Visual Highlighting**: Draws bounding boxes around detected damage.
 - **Model Selection**: Choose specific Gemini models (Flash, Pro, etc.) dynamically.
 - **Responsive UI**: Built with Next.js and Tailwind CSS for a premium look.

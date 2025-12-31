@@ -235,7 +235,17 @@ export default function Home() {
                   <h4 className="text-lg font-semibold mb-3 flex items-center gap-2">
                     <CheckCircle className="w-5 h-5 text-green-500" /> Analysis Complete
                   </h4>
-                  {result.damages.length === 0 ? (
+
+                  {/* Error Message for Non-Car Images */}
+                  {result.error ? (
+                    <div className="p-4 bg-red-900/20 border border-red-500/50 rounded-lg text-red-200 flex items-start gap-3">
+                      <AlertCircle className="w-6 h-6 shrink-0 text-red-500" />
+                      <div>
+                        <p className="font-bold text-red-400">Validation Error</p>
+                        <p>{result.error}</p>
+                      </div>
+                    </div>
+                  ) : result.damages.length === 0 ? (
                     <p className="text-neutral-400">No significant damage detected.</p>
                   ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3">

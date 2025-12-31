@@ -98,23 +98,34 @@ async def detect_damage(
         print(f"Attempting to use model: {selected_model}")
         
         prompt = """
-        Indentify ALL visible exterior damages. 
-        CRITICAL: actively look for and explicitly list specific broken components separately from general body damage.
+        Analyze this image.
+        
+        Step 1: Determine if the image contains a vehicle (car, truck, SUV, van).
+        - If NO vehicle is detected, return JSON: {"is_car": false, "damages": []}
+        
+        Step 2: If a vehicle IS detected, identify ALL visible exterior damages.
+        - CRITICAL: actively look for and explicitly list specific broken components separately.
         
         You must check for and list:
-        - Broken Headlights / Taillights (List these separately!)
-        - Broken / Cracked / Missing Side Mirrors (List these separately!)
+        - Broken Headlights / Taillights
+        - Broken / Cracked / Missing Side Mirrors
         - Cracked / Shattered Glass (Windshield, Windows)
         - Dents/Scratches on specific panels (Hood, Bumper, Fenders, Doors)
         - Misaligned panels or Grille damage
 
-        Return the result as a JSON object with a list of "damages".
-        For each damage found, provide:
-        - "label": Specific description (e.g. "Broken Side Mirror", "Deep Scratch on Front Door")
-        - "box_2d": A bounding box [ymin, xmin, ymax, xmax] normalized to 0-1000 scale.
-        - "score": Confidence score (0.0 to 1.0).
+        Return the result as a JSON object:
+        {
+            "is_car": true,
+            "damages": [
+                {
+                    "label": "Specific description",
+                    "box_2d": [ymin, xmin, ymax, xmax], // 0-1000 scale
+                    "score": 0.0 to 1.0
+                }
+            ]
+        }
         
-        If no damage is found, return empty list.
+        If valid vehicle but no damage, return {"is_car": true, "damages": []}
         IMPORTANT: Return ONLY valid JSON. Do not use markdown code blocks.
         """
         
@@ -133,6 +144,16 @@ async def detect_damage(
         
         try:
             data = json.loads(text_response)
+            
+            # Check for non-car
+            if data.get("is_car") is False:
+                return {
+                    "damages": [],
+                    "source": "gemini",
+                    "model": selected_model,
+                    "error": "No vehicle detected in the image. Please upload a clear photo of a car."
+                }
+
             return {
                 "damages": data.get("damages", []), 
                 "source": "gemini", 

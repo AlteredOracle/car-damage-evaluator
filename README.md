@@ -20,7 +20,15 @@ A modern web application that uses **Generative AI (Google Gemini)** to detect, 
 
 ## 🚀 Getting Started
 
-### Prerequisites
+### Quick Start (Mac/Linux)
+Run everything with one command:
+```bash
+./start.sh
+```
+*(This will automatically clean up ports 3000/8000 and start both servers)*
+
+### Detailed Setup
+
 - Node.js 18+
 - Python 3.9+
 - A Google Cloud API Key for Gemini (Get one at [Google AI Studio](https://aistudio.google.com/))

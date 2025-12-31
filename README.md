@@ -20,6 +20,10 @@ A modern web application that uses **Generative AI (Google Gemini)** to detect, 
 
 ## 🚀 Getting Started
 
+### 🌍 Deployment
+**Want to put this online?**
+👉 **[Read the Full Deployment Guide (Render + Vercel)](DEPLOYMENT.md)**
+
 ### Quick Start (Mac/Linux)
 Run everything with one command:
 ```bash

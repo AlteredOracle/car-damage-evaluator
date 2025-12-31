@@ -27,12 +27,7 @@ A modern web application that uses **Generative AI (Google Gemini)** to detect, 
 
 ### 1. Backend Setup (Python)
 
-Navigate to the backend folder:
-```bash
-cd backend
-```
-
-Create and activate a virtual environment:
+Create and activate a virtual environment (in the root):
 ```bash
 # macOS/Linux
 python3 -m venv venv
@@ -55,7 +50,7 @@ GOOGLE_API_KEY=your_actual_api_key_here
 
 Run the server:
 ```bash
-uvicorn main:app --reload --host 0.0.0.0 --port 8000
+uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000
 ```
 *The backend should now be running at `http://localhost:8000`*
 

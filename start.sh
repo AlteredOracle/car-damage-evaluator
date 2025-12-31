@@ -14,6 +14,20 @@ kill_port() {
 
 echo "🚗 Starting Car Damage Evaluator..."
 
+# Check for .env file
+if [ ! -f "backend/.env" ]; then
+    echo "⚠️  backend/.env not found!"
+    read -p "Enter your Google Gemini API Key: " API_KEY
+    if [ -n "$API_KEY" ]; then
+        echo "GOOGLE_API_KEY=$API_KEY" > backend/.env
+        echo "✅ created backend/.env"
+    else
+        echo "❌ No API Key provided. The backend will run in simulation mode."
+    fi
+else
+    echo "✅ backend/.env found."
+fi
+
 # 1. Kill existing processes
 echo "Cleaning up ports..."
 kill_port 8000

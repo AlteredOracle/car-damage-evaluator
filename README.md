@@ -25,7 +25,7 @@ Run everything with one command:
 ```bash
 ./start.sh
 ```
-*(This will automatically clean up ports 3000/8000 and start both servers)*
+*(This will automatically set up your API Key, clean up ports, and start both servers)*
 
 ### Detailed Setup
 
